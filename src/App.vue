@@ -38,29 +38,44 @@
 </template>
 
 <script>
-import StepOne from './components/StepOne'
-import StepTwo from './components/StepTwo'
-import StepThree from './components/StepThree'
-import FormProgression from './components/FormProgression'
-
+// import $ from 'jquery'
+//
 import 'normalize.css'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
+
+import StepOne from './components/StepOne'
+import StepTwo from './components/StepTwo'
+import StepThree from './components/StepThree'
+import StepFour from './components/StepFour'
+import FormProgression from './components/FormProgression'
 
 export default {
   name: 'app',
   data () {
     return {
-      steps: [StepOne, StepTwo, StepThree],
+      steps: [StepOne, StepTwo, StepThree, StepFour],
       stepIndex: 0
     }
   },
   mounted () {
+  // $(document).ready(function() {
+  //   $('select').material_select();
+  // });
+  //
+    // $('.datepicker').pickadate({
+    // $('document').ready(function () {
+    //   $('.datepicker').pickadate({
+    //     selectMonths: true,
+    //     selectYears: 15
+    //   })
+    // })
   },
   components: {
     StepOne,
     StepTwo,
     StepThree,
+    StepFour,
     FormProgression
   },
   computed: {
@@ -78,6 +93,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.card-panel {
+  min-height: 650px;
+}
 </style>
