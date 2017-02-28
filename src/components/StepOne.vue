@@ -1,7 +1,7 @@
 <template>
   <div class='step-one-component'>
-    <span>I am a very simple card. I am good at containing small bits of information.
-    I am convenient because I require little markup to use effectively.</span>
+    <p>I am a very simple card. I am good at containing small bits of information.
+    I am convenient because I require little markup to use effectively.</p>
 
     <div class='row'>
       <div class='input-field col s12'>
