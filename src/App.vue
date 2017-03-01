@@ -1,14 +1,14 @@
 <template>
   <div id='app'>
     <div class='container'>
-      <form autocomplete='off'>
-        <div class='row'>
-          <div class='col s12 m5'>
-            <div class='card-panel hoverable'>
+      <div class='row'>
+        <div class='col s12 m5 offset-m3'>
+          <div class='card-panel hoverable'>
+            <form autocomplete='off'>
               <div class='row'>
                 <div class='col s12'>
                   <keep-alive>
-                    <component :is='currentView' keep-alive></component>
+                    <component :is='currentView' @fill='test' :form='form' keep-alive></component>
                   </keep-alive>
                 </div>
               </div>
@@ -29,17 +29,15 @@
                   <form-progression :number-steps='numberSteps' :current-step='currentStep'></form-progression>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// import $ from 'jquery'
-//
 import 'normalize.css'
 import 'materialize-css/bin/materialize.css'
 import 'materialize-css/bin/materialize.js'
@@ -51,25 +49,29 @@ import StepFour from './components/StepFour'
 import FormProgression from './components/FormProgression'
 
 export default {
-  name: 'app',
   data () {
     return {
       steps: [StepOne, StepTwo, StepThree, StepFour],
-      stepIndex: 0
+      stepIndex: 0,
+      form: {
+        civility: null,
+        firstname: null,
+        lastname: null,
+        email: null,
+        phone: null,
+        birthDate: null,
+        budget: null,
+        applicant: null,
+        applicantCivility: null,
+        applicantFirstname: null,
+        applicantLastname: null
+      }
     }
   },
-  mounted () {
-  // $(document).ready(function() {
-  //   $('select').material_select();
-  // });
-  //
-    // $('.datepicker').pickadate({
-    // $('document').ready(function () {
-    //   $('.datepicker').pickadate({
-    //     selectMonths: true,
-    //     selectYears: 15
-    //   })
-    // })
+  created () {
+    this.$on('fill', function (data) {
+      console.log('data: ', data)
+    })
   },
   components: {
     StepOne,
@@ -82,13 +84,19 @@ export default {
     currentStep () { let index = this.stepIndex; return ++index },
     numberSteps () { return this.steps.length },
     currentView () { return this.steps[this.stepIndex] },
-    // progression () { return `${this.currentStep} / ${this.numberSteps}` },
     isFirstStep () { return this.currentStep === 1 },
     isLastStep () { return this.currentStep === this.numberSteps }
   },
   methods: {
     next () { if (this.stepIndex < this.numberSteps - 1) this.stepIndex++ },
-    back () { this.stepIndex-- }
+    back () { this.stepIndex-- },
+    test (data) {
+      const name = data['name']
+
+      if (this.form[name] !== undefined) {
+        this.form[name] = data['value']
+      }
+    }
   }
 }
 </script>
@@ -97,4 +105,35 @@ export default {
 .card-panel {
   min-height: 650px;
 }
+
+.input-field label {
+  color: #000;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label,
+.input-field input[type=email]:focus + label {
+  color: #000;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.input-field input[type=email]:focus {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+/* valid color */
+/*.input-field input[type=text].valid,
+.input-field input[type=email].valid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}*/
+
+/* invalid color */
+/*.input-field input[type=text].invalid,
+.input-field input[type=email].invalid {
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}*/
 </style>

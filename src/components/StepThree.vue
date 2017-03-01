@@ -5,7 +5,7 @@
     <div class='row'>
       <div class='input-field col s12'>
         <p class='range-field'>
-          <input type='range' id='test5' min='0' max='100' v-model='budget'>
+          <input type='range' min='0' max='1000' name='budget'>
         </p>
       </div>
     </div>
@@ -13,25 +13,14 @@
 </template>
 
 <script>
+import StepsInputs from '../mixins/StepsInputs.js'
+
 export default {
-  name: 'step-three',
+  mixins: [StepsInputs],
   data () {
     return {
-
+      budget: 500
     }
-  },
-  mounted () {
-    // var slider = document.getElementById('test5')
-    //
-    // noUiSlider.create(slider, {
-    //   start: [20, 80],
-    //   connect: true,
-    //   step: 1,
-    //   range: {
-    //     'min': 0,
-    //     'max': 100
-    //   }
-    // })
   }
 }
 </script>

@@ -5,38 +5,38 @@
     <div class='row'>
       <div class='col s12'>
         <p>
-          <input name='group1' type='radio' id='test1' v-model='civility'>
-          <label for='test1'>Mme</label>
+          <input id='female-civility' type='radio' value='female' name='civility' @click='fill'>
+          <label for='female-civility'>Mme</label>
         </p>
         <p>
-          <input name='group1' type='radio' id='test2' v-model='civility'>
-          <label for='test2'>M.</label>
+          <input id='male-civility' type='radio' value='male' name='civility' @click='fill'>
+          <label for='male-civility'>M.</label>
         </p>
       </div>
     </div>
 
     <div class='row'>
       <div class='input-field col s6'>
-        <input id='first-name' type='text' class='validate' v-model='firstname'>
-        <label for='first-name'>Prénom</label>
+        <input id='firstname' type='text' class='validate' name='firstname' @change='fill'>
+        <label for='firstname'>Prénom</label>
       </div>
 
       <div class='input-field col s6'>
-        <input id='last-name' type='text' class='validate' v-model='lastname'>
-        <label for='last-name'>Nom</label>
+        <input id='lastname' type='text' class='validate' name='lastname' @change='fill'>
+        <label for='lastname'>Nom</label>
       </div>
     </div>
 
     <div class='row'>
       <div class='input-field col s12'>
-        <input id='email' type='email' class='validate' required v-model='email'>
+        <input id='email' type='email' class='validate' name='email' required @change='fill'>
         <label for='email' data-error='format invalide' data-success='format valide'>Email *</label>
       </div>
     </div>
 
     <div class='row'>
       <div class='input-field col s12'>
-        <input id='phone' type='tel' class='validate' v-model='phone'>
+        <input id='phone' type='tel' class='validate' name='phone' @change='fill'>
         <label for='phone' data-error='format invalide' data-success='format valide'>Téléphone</label>
       </div>
     </div>
@@ -46,49 +46,12 @@
 <script>
 // import $ from 'jquery'
 
-export default {
-  name: 'step-one',
-  data () {
-    return {
+import StepsInputs from '../mixins/StepsInputs.js'
 
-    }
-  },
-  mounted () {
-    // $('document').ready(function () {
-    //   $('.datepicker').pickadate({
-    //     selectMonths: true,
-    //     selectYears: 15
-    //   })
-    // })
-  }
+export default {
+  mixins: [StepsInputs]
 }
 </script>
 
-<style>
-.input-field label {
-  color: #000;
-}
-
-/* label focus color */
-.input-field input[type=text]:focus + label {
-  color: #000;
-}
-
-/* label underline focus color */
-.input-field input[type=text]:focus {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-/* valid color */
-/*.input-field input[type=text].valid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-}
-
-/* invalid color */
-/*.input-field input[type=text].invalid {
-  border-bottom: 1px solid #000;
-  box-shadow: 0 1px 0 0 #000;
-}*/
+<style scoped>
 </style>
