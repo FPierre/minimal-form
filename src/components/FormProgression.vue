@@ -25,7 +25,7 @@ export default {
   height: 9px;
   margin: auto 2px;
   background-color: #ddd;
-  border-radius: 9px;
+  border-radius: 5px;
 }
 
 .step.active {

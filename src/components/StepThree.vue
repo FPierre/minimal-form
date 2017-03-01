@@ -1,9 +1,11 @@
 <template>
   <div class='step-three-component'>
+    <h5>Budget estimé alloué à ma demande</h5>
+
     <div class='row'>
       <div class='input-field col s12'>
         <p class='range-field'>
-          <input type='range' id='test5' min='0' max='100'>
+          <input type='range' id='test5' min='0' max='100' v-model='budget'>
         </p>
       </div>
     </div>
