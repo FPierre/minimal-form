@@ -1,15 +1,11 @@
-<template>
-  <div class='step-three-component'>
-    <h5>Budget estimé alloué à ma demande</h5>
+<template lang='pug'>
+.step-three-component
+  h5 Budget estimé alloué à ma demande
 
-    <div class='row'>
-      <div class='input-field col s12'>
-        <p class='range-field'>
-          <input type='range' min='0' max='1000' name='budget'>
-        </p>
-      </div>
-    </div>
-  </div>
+  .row
+    .input-field.col.s12
+      p.range-field
+        input(type='range', min='0', max='1000', name='budget')
 </template>
 
 <script>

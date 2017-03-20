@@ -1,46 +1,35 @@
-<template>
-  <div class='step-one-component'>
-    <h5>Vos informations</h5>
+<template lang='pug'>
+.step-one-component
+  h5 Vos informations
 
-    <div class='row'>
-      <div class='col s12'>
-        <p>
-          <input id='female-civility' type='radio' value='female' name='civility' @click='fill'>
-          <label for='female-civility'>Mme</label>
-        </p>
-        <p>
-          <input id='male-civility' type='radio' value='male' name='civility' @click='fill'>
-          <label for='male-civility'>M.</label>
-        </p>
-      </div>
-    </div>
+  .row
+    .col.s12
+      p
+        input#female-civility(type='radio', value='female', name='civility', @click='fill')
+        label(for='female-civility') Mme
 
-    <div class='row'>
-      <div class='input-field col s6'>
-        <input id='firstname' type='text' class='validate' name='firstname' @change='fill'>
-        <label for='firstname'>Prénom</label>
-      </div>
+      p
+        input#male-civility(type='radio', value='male', name='civility', @click='fill')
+        label(for='male-civility') M.
 
-      <div class='input-field col s6'>
-        <input id='lastname' type='text' class='validate' name='lastname' @change='fill'>
-        <label for='lastname'>Nom</label>
-      </div>
-    </div>
+  .row
+    .input-field.col.s12.m6
+      input#firstname.validate(type='text', name='firstname', @change='fill')
+      label(for='firstname') Pr&eacute;nom
 
-    <div class='row'>
-      <div class='input-field col s12'>
-        <input id='email' type='email' class='validate' name='email' required @change='fill'>
-        <label for='email' data-error='format invalide' data-success='format valide'>Email *</label>
-      </div>
-    </div>
+    .input-field.col.s12.m6
+      input#lastname.validate(type='text', name='lastname', @change='fill')
+      label(for='lastname') Nom
 
-    <div class='row'>
-      <div class='input-field col s12'>
-        <input id='phone' type='tel' class='validate' name='phone' @change='fill'>
-        <label for='phone' data-error='format invalide' data-success='format valide'>Téléphone</label>
-      </div>
-    </div>
-  </div>
+  .row
+    .input-field.col.s12
+      input#email.validate(type='email', name='email', required='', @change='fill')
+      label(for='email', data-error='format invalide', data-success='format valide') Email *
+
+  .row
+    .input-field.col.s12
+      input#phone.validate(type='tel', name='phone', @change='fill')
+      label(for='phone', data-error='format invalide', data-success='format valide') Téléphone
 </template>
 
 <script>

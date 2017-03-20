@@ -1,54 +1,41 @@
-<template>
-  <div class='step-two-component'>
-    <h5>Pour qui faites-vous la demande ?</h5>
+<template lang='pug'>
+.step-two-component
+  h5 Pour qui faites-vous la demande ?
 
-    <div class='row'>
-      <div class='col s12'>
-        <p>
-          <input id='applicant-self' name='applicant' type='radio' value='self' @click='fill' v-model='applicant'>
-          <label for='applicant-self'>Vous-même</label>
-        </p>
-        <p>
-          <input id='applicant-other' name='applicant' type='radio' value='other' @click='fill' v-model='applicant'>
-          <label for='applicant-other'>Un proche</label>
-        </p>
-      </div>
-    </div>
+  .row
+    .col.s12
+      p
+        input#applicant-self(name='applicant', type='radio', value='self', @click='fill', v-model='applicant')
+        label(for='applicant-self') Vous-m&ecirc;me
 
-    <template v-if='applicant === "other"'>
-      <div class='row'>
-        <div class='col s12'>
-          <p>
-            <input id='applicant-civility-female' type='radio' value='female' name='applicantCivility' @click='fill'>
-            <label for='applicant-civility-female'>Mme</label>
-          </p>
-          <p>
-            <input id='applicant-civility-male' type='radio' value='male' name='applicantCivility' @click='fill'>
-            <label for='applicant-civility-male'>M.</label>
-          </p>
-        </div>
-      </div>
+      p
+        input#applicant-other(name='applicant', type='radio', value='other', @click='fill', v-model='applicant')
+        label(for='applicant-other') Un proche
 
-      <div class='row'>
-        <div class='input-field col s6'>
-          <input id='applicant-firstname' type='text' class='validate' name='applicantFirstname' @change='fill'>
-          <label for='applicant-firstname'>Prénom</label>
-        </div>
+  template(v-if='applicant === "other"')
+    .row
+      .col.s12
+        p
+          input#applicant-civility-female(type='radio', value='female', name='applicantCivility', @click='fill')
+          label(for='applicant-civility-female') Mme
 
-        <div class='input-field col s6'>
-          <input id='applicant-lastname' type='text' class='validate' name='applicantLastname' @change='fill'>
-          <label for='applicant-lastname'>Nom</label>
-        </div>
-      </div>
-    </template>
+        p
+          input#applicant-civility-male(type='radio', value='male', name='applicantCivility', @click='fill')
+          label(for='applicant-civility-male') M.
 
-    <div class='row'>
-      <div class='input-field col s12'>
-        <input id='birth-date' type='text' class='datepicker' name='birthDate' @change='fill'>
-        <label for='birth-date'>Date de naissance</label>
-      </div>
-    </div>
-  </div>
+    .row
+      .input-field.col.s6
+        input#applicant-firstname.validate(type='text', name='applicantFirstname', @change='fill')
+        label(for='applicant-firstname') Pr&eacute;nom
+
+      .input-field.col.s6
+        input#applicant-lastname.validate(type='text', name='applicantLastname', @change='fill')
+        label(for='applicant-lastname') Nom
+
+    .row
+      .input-field.col.s12
+        input#birth-date.datepicker(type='text', name='birthDate', @change='fill')
+        label(for='birth-date') Date de naissance
 </template>
 
 <script>

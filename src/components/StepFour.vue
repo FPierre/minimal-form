@@ -1,17 +1,14 @@
-<template>
-  <div class='step-four-component'>
-    <h5>Récapitulatif de ma demande</h5>
+<template lang='pug'>
+.step-four-component
+  h5 Récapitulatif de ma demande
 
-    <div class='row'>
-      <div class='col s12'>
-        <p>Personne concernée : {{ concernedPerson }}</p>
-        <p>Email : {{ form.email }}</p>
-        <p>Téléphone : {{ form.phone }}</p>
-        <p>Date de naissance : {{ form.birthDate }}</p>
-        <p>Budget estimé : {{ form.budget }}</p>
-      </div>
-    </div>
-  </div>
+  .row
+    .col.s12
+      p Personne concernée : {{ concernedPerson }}
+      p Email : {{ form.email }}
+      p Téléphone : {{ form.phone }}
+      p Date de naissance : {{ form.birthDate }}
+      p Budget estimé : {{ form.budget }}
 </template>
 
 <script>

@@ -1,9 +1,7 @@
-<template>
-  <div class='form-progression-component'>
-    <div class='center-align'>
-      <div class='step' v-for='(step, index) in numberSteps' :class='{ active: currentStep > index }'></div>
-    </div>
-  </div>
+<template lang='pug'>
+.form-progression-component
+  .center-align
+    .step(v-for='(step, index) in numberSteps', :class='{ active: currentStep> index }')
 </template>
 
 <script>
