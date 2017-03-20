@@ -1,40 +1,26 @@
-<template>
-  <div id='app'>
-    <div class='container'>
-      <div class='row'>
-        <div class='col s12 m5 offset-m3'>
-          <div class='card-panel hoverable'>
-            <form autocomplete='off'>
-              <div class='row'>
-                <div class='col s12'>
-                  <keep-alive>
-                    <component :is='currentView' @fill='test' :form='form' keep-alive></component>
-                  </keep-alive>
-                </div>
-              </div>
+<template lang='pug'>
+#app
+  .container
+    .row
+      .col.s12.m5.offset-m3
+        .card-panel.hoverable
+          form(autocomplete='off')
+            .row
+              .col.s12
+                keep-alive
+                  component(:is='currentView', @fill='test', :form='form')
 
-              <div class='row'>
-                <div class='col s6'>
-                  <a class='waves-effect waves-light btn-flat' @click='back' v-if='!isFirstStep'>Back</a>
-                </div>
+            .row
+              .col.s6
+                a.waves-effect.waves-light.btn-flat(@click='back', v-if='!isFirstStep') Back
 
-                <div class='col s6'>
-                  <button class='right waves-effect waves-light btn' v-if='isLastStep'>Submit</button>
-                  <a class='right waves-effect waves-light blue darken-3 btn' @click='next' v-else>Next</a>
-                </div>
-              </div>
+              .col.s6
+                button.right.waves-effect.waves-light.btn(v-if='isLastStep') Submit
+                a.right.waves-effect.waves-light.blue.darken-3.btn(@click='next', v-else) Next
 
-              <div class='row'>
-                <div class='col s12'>
-                  <form-progression :number-steps='numberSteps' :current-step='currentStep'></form-progression>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            .row
+              .col.s12
+                form-progression(:number-steps='numberSteps', :current-step='currentStep')
 </template>
 
 <script>

@@ -60,6 +60,12 @@ export default {
     return {
       applicant: null
     }
+  },
+  mounted () {
+    // $('.datepicker').pickadate({
+      // selectMonths: true,
+      // selectYears: 15
+    // })
   }
 }
 </script>
