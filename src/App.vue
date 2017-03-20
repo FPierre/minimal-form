@@ -4,23 +4,26 @@
     .row
       .col.s12.m5.offset-m3
         .card-panel.hoverable
-          form(autocomplete='off')
-            .row
-              .col.s12
-                keep-alive
-                  component(:is='currentView', @fill='test', :form='form')
+          .card-content
+            form(autocomplete='off')
+              .steps
+                .row
+                  .col.s12
+                    keep-alive
+                      component(:is='currentView', @fill='test', :form='form')
 
-            .row
-              .col.s6
-                a.waves-effect.waves-light.btn-flat(@click='back', v-if='!isFirstStep') Back
+              .actions    
+                .row
+                  .col.s12
+                    form-progression(:number-steps='numberSteps', :current-step='currentStep')
 
-              .col.s6
-                button.right.waves-effect.waves-light.btn(v-if='isLastStep') Submit
-                a.right.waves-effect.waves-light.blue.darken-3.btn(@click='next', v-else) Next
+                .row
+                  .col.s6
+                    a.waves-effect.waves-light.btn-flat(@click='back', v-if='!isFirstStep') Précédent
 
-            .row
-              .col.s12
-                form-progression(:number-steps='numberSteps', :current-step='currentStep')
+                  .col.s6
+                    button.right.waves-effect.waves-light.btn(v-if='isLastStep') Envoyer
+                    a.right.waves-effect.waves-light.blue.darken-3.btn(@click='next', v-else) Suivant
 </template>
 
 <script>
@@ -54,11 +57,6 @@ export default {
       }
     }
   },
-  created () {
-    this.$on('fill', function (data) {
-      console.log('data: ', data)
-    })
-  },
   components: {
     StepOne,
     StepTwo,
@@ -89,7 +87,15 @@ export default {
 
 <style scoped>
 .card-panel {
-  min-height: 650px;
+
+}
+
+.card-panel .steps {
+  min-height: 580px;
+}
+
+.card-panel .actions {
+
 }
 
 .input-field label {
