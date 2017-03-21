@@ -14,8 +14,8 @@
 
   .row
     .input-field.col.s12.m6
-      input#firstname.validate(type='text', name='firstname', @change='fill')
-      label(for='firstname') Pr&eacute;nom
+      input#firstname.validate(type='text', name='firstname', @change='fill', v-validate="'required'")
+      label(for='firstname') Prénom
 
     .input-field.col.s12.m6
       input#lastname.validate(type='text', name='lastname', @change='fill')
@@ -23,8 +23,8 @@
 
   .row
     .input-field.col.s12
-      input#email.validate(type='email', name='email', required='', @change='fill')
-      label(for='email', data-error='format invalide', data-success='format valide') Email *
+      input#email.validate(type='text', name='email', @change='fill', v-validate="'required|email'", :class="{ 'invalid': errors.has('email') }")
+      label(for='email', :data-error="errors.first('email')", data-success='right') Email *
 
   .row
     .input-field.col.s12
@@ -33,8 +33,6 @@
 </template>
 
 <script>
-// import $ from 'jquery'
-
 import StepsInputs from '../mixins/StepsInputs.js'
 
 export default {
@@ -43,4 +41,12 @@ export default {
 </script>
 
 <style scoped>
+.input-field input[type=text]:focus + label {
+  color: #1565c0;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #1565c0;
+  box-shadow: 0 1px 0 0 #1565c0;
+}    
 </style>

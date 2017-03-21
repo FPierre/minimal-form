@@ -17,7 +17,9 @@
     "materialize-css": "^0.98.0",
     "normalize.css": "^5.0.0",
     "pug": "^2.0.0-beta11",
-    "vue": "^2.2.1"
+    "vee-validate": "^2.0.0-beta.25",
+    "vue": "^2.2.1",
+    "vue-spinner": "^1.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
