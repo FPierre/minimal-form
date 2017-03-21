@@ -3,15 +3,16 @@
   .container
     .row
       .col.s12.m5.offset-m3
-        .card-panel.hoverable(:class='classObject')
+        .card-panel.hoverable(:class='{ "blue darken-3 white-text": this.formSend }')
           .card-content
             step-form-send(v-if='formSend')
             form(autocomplete='off' v-else)
               .steps
                 .row
                   .col.s12
-                    keep-alive
-                      component(:is='currentView', @fill='fill', :form='form')
+                    transition(name='component-fade', mode='out-in')
+                      keep-alive
+                        component(:is='currentView', @fill='fill', :form='form')
 
               .actions
                 .row
@@ -23,7 +24,7 @@
                     a.waves-effect.waves-light.btn-flat(@click='back', v-if='!isFirstStep') Précédent
 
                   .col.s6
-                    button.right.waves-effect.waves-light.btn(@click.prevent='submit' v-if='isLastStep') Envoyer
+                    button.btn.right.waves-effect.waves-light.blue.darken-3(@click.prevent='submit' v-if='isLastStep') Envoyer
                     a.btn.right.waves-effect.waves-light.blue.darken-3(@click="next", v-else) Suivant
 </template>
 
@@ -75,12 +76,7 @@ export default {
     currentView () { return this.steps[this.stepIndex] },
     numberSteps () { return this.steps.length },
     isFirstStep () { return this.currentStep === 1 },
-    isLastStep () { return this.currentStep === this.numberSteps },
-    classObject () {
-      return {
-        'blue darken-3 white-text': this.formSend
-      }
-    }
+    isLastStep () { return this.currentStep === this.numberSteps }
   },
   mounted () {
     // Emit that validation is required on the bus
@@ -141,7 +137,13 @@ export default {
   min-height: 500px;
 }
 
-.card-panel .actions {
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity .1s ease-in;
+}
 
+.component-fade-enter,
+.component-fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,9 +1,9 @@
 <template lang='pug'>
 .step-form-send-component
-  span {{ formState }}
-
   pulse-loader(:loading='loading', color='#fff', size='6px', v-if='loading')
   i.material-icons(v-else) done
+
+  button.btn.white.blue-text.text-darken-3.waves-effect(:disabled='loading') Menu
 </template>
 
 <script>
@@ -13,15 +13,6 @@ export default {
   data () {
     return {
       loading: true
-    }
-  },
-  computed: {
-    formState () {
-      if (this.loading) {
-        return "Formulaire en cours d'envoi"
-      } else {
-        return 'Formulaire envoyé'
-      }
     }
   },
   mounted () {
@@ -42,7 +33,7 @@ export default {
   height: 100%;
 }
 
-.step-form-send-component span {
-  font-size: 2em;
+.step-form-send-component .btn{
+  margin-top: 3em;
 }
 </style>
